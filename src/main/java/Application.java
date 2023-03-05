@@ -1,4 +1,10 @@
+import dao.EmployeeDAO;
+import dao.EmployeeDAOImpl;
+import model.Employee;
+
+import java.awt.*;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class Application {
     public static void main(String[] args) throws SQLException {
@@ -41,7 +47,30 @@ public class Application {
                 System.out.println(gender);
                 System.out.println(age);
             }
+
+            //Создаем объект класса EmployeeDAOImpl
+            EmployeeDAO employeeDao = new EmployeeDAOImpl(connection);
+            Employee empl1 = new Employee(7, "Darya", "Androva", "woman", 25);
+
+            // Создаём новый объект
+            employeeDao.create(empl1);
+
+            // Создаем список наполняя его объектами, которые получаем
+            // путем вызова метода для получения всех элементов таблицы
+            List <Employee> employeeList = new ArrayList<>(employeeDao.getAllEmployees());
+
+            //Выведем список в консоль
+            for (Employee employee : employeeList) {
+                System.out.println(employee);
+            }
+
+            //Вызываем метод обновления данных в базе
+            employeeDao.updateById(7,26);
+
+            //Вызываем метод удаления данных из базы
+            employeeDao.deleteById(7);
         }
+
     }
 
 }
