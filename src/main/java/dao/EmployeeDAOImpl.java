@@ -72,7 +72,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
             }
         } catch (SQLException ignored) {
         }
-        return employee;
+        return null;
     }
 
     @Override
