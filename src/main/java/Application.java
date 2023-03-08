@@ -65,7 +65,7 @@ public class Application {
             }
 
             //Вызываем метод обновления данных в базе
-            employeeDao.updateById(7,26);
+            employeeDao.updateById(7,empl1);
 
             //Вызываем метод удаления данных из базы
             employeeDao.deleteById(7);
